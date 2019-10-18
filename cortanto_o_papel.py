@@ -10,8 +10,8 @@ for i in range(len(h)):
 alturas.sort()                                     #Ordenar a lista de tuplas, pelas alturas, começando pela menor altura
 
 
-#Criar um marcador para identificar os retângulos já verificados com 0
-mark = [1 for i in range(N+2)] #1 representa os ainda não visitados
+#Criar um marcador para identificar os retângulos já verificados com "0"
+mark = [1 for i in range(N+2)] #"1" representa os ainda não verificados
 mark[0] = 0                    #Marcar com 0 a primeira posição para representar a borda inicial
 mark[N+1] = 0                  #Marcar com 0 a última posição para representar a borda final
 
@@ -21,11 +21,11 @@ pieces_max = 2      #Quantidade máxima de pedaços(resultado global)
 pieces_cur = 2      #Quantidade máxima de pedaços(índice corrente)
                     #Quantidade máxima de pedaços é a partir de 2 
 for i in alturas:
-     h, index = i                                   #Para acessar os índices h (altura)e index (posição) das tuplas
+     h, index = i                                   #Para acessar os índices h (altura) e index (posição) das tuplas
      pieces_max = max(pieces_max, pieces_cur)       #Quantidade de cortes é o maior valor entre o valor acumulado e o valor corrente
-     mark[index] = 0                                #Marcar o retângulo a ser verificado
+     mark[index] = 0                                #Marcar o retângulo a ser verificado com "0"
      if mark[index-1]==1 and mark[index+1]==1:      #Quando o retângulo verificado for menor que o anterior e o posterior
-        pieces_cur+=1                               #Soma um pedaço
+        pieces_cur+=1                               #Somar um pedaço
      if mark[index-1]==0 and mark[index+1]==0:      #Quando o retângulo verificado for maior que o anterior e o posterior
         pieces_cur-=1                               #Subtrair um pedaço
 
